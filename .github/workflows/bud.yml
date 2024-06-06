@@ -23,21 +23,13 @@ jobs:
       - name: Nuget Restore
         run: nuget restore
       
-      - name: Build .Net472
-        run: msbuild /p:Configuration=Release /p:TargetFramework=net472 /verbosity:minimal
-
       - name: Build .Net5
         run: msbuild /t:AssetStudioGUI:publish /p:Configuration=Release /p:TargetFramework=net5.0-windows /p:SelfContained=false /verbosity:minimal
 
       - name: Build .Net6
         run: msbuild /t:AssetStudioGUI:publish /p:Configuration=Release /p:TargetFramework=net6.0-windows /p:SelfContained=false /verbosity:minimal
 
-      - name: Upload .Net472 Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: AssetStudio.net472
-          path: AssetStudioGUI/bin/Release/net472
-
+      
       - name: Upload .Net5 Artifact
         uses: actions/upload-artifact@v2
         with:
