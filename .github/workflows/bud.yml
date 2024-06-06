@@ -23,19 +23,12 @@ jobs:
       - name: Nuget Restore
         run: nuget restore
       
-      - name: Build .Net5
-        run: msbuild /t:AssetStudioGUI:publish /p:Configuration=Release /p:TargetFramework=net5.0-windows /p:SelfContained=false /verbosity:minimal
-
+      
       - name: Build .Net6
         run: msbuild /t:AssetStudioGUI:publish /p:Configuration=Release /p:TargetFramework=net6.0-windows /p:SelfContained=false /verbosity:minimal
 
       
-      - name: Upload .Net5 Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: AssetStudio.net5
-          path: AssetStudioGUI/bin/Release/net5.0-windows/publish
-
+      
       - name: Upload .Net6 Artifact
         uses: actions/upload-artifact@v2
         with:
